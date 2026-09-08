@@ -153,6 +153,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
 /* Filter */
 .filter-bar{display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;flex-wrap:wrap}
+.hub-search{flex:1 1 260px;min-width:220px;max-width:420px;padding:9px 16px;border-radius:8px;font-family:'Space Mono',monospace;font-size:.7rem;color:var(--text);background:rgba(255,255,255,0.04);border:1px solid var(--border);outline:none;transition:all .2s}
+.hub-search::placeholder{color:var(--text-muted)}
+.hub-search:focus{border-color:var(--border-hover);background:rgba(255,255,255,0.07)}
+.hub-empty{display:none;grid-column:1/-1;padding:3rem 1rem;text-align:center;font-family:'Space Mono',monospace;font-size:.8rem;color:var(--text-dim)}
+.hub-empty.show{display:block}
 .filter-btn{padding:8px 16px;border-radius:8px;font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);background:transparent;border:1px solid var(--border);cursor:pointer;transition:all .2s;white-space:nowrap}
 .filter-btn:hover{border-color:var(--border-hover);color:var(--text)}
 .filter-btn.active{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:#fff}
@@ -732,161 +737,164 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
   <!-- Filters -->
   <div class="filter-bar reveal">
+    <input type="search" id="hub-search" class="hub-search" placeholder="Поиск по гайдам — сайты, агенты, бесплатно..." autocomplete="off">
     <button class="filter-btn active" data-filter="all">Все</button>
-    <button class="filter-btn" data-filter="claude">Claude</button>
-    <button class="filter-btn" data-filter="antigravity">AntiGravity</button>
-    <button class="filter-btn" data-filter="notebooklm">NotebookLM</button>
-    <button class="filter-btn" data-filter="gemini">Gemini</button>
+    <button class="filter-btn" data-filter="sites">Сайты и дизайн</button>
+    <button class="filter-btn" data-filter="agents">Агенты и автоматизация</button>
+    <button class="filter-btn" data-filter="cheap">Бесплатно и дёшево</button>
+    <button class="filter-btn" data-filter="media">Видео и картинки</button>
+    <button class="filter-btn" data-filter="money">Заработок</button>
   </div>
 
   <!-- Grid -->
   <div class="video-grid">
-    <a href="https://gomymy64.github.io/aisa-claude-superman-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/aisa-claude-superman-cheatsheet/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/aisa-superman.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · AIsa</span><span class="card-dur">25:54</span></div>
       <div class="card-body"><h3 class="card-title">Как Я Превратил Claude в Супермена Поиска (AIsa)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/chatllm-abacus-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/chatllm-abacus-cheatsheet/" target="_blank" class="video-card" data-tags="cheap agents">
       <div class="card-top"><img src="img/chatllm-abacus.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">ChatLLM</span><span class="card-dur">18:01</span></div>
       <div class="card-body"><h3 class="card-title">Все Топовые Нейросети за $10 в Месяц (ChatLLM)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/minimax-code-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/minimax-code-cheatsheet/" target="_blank" class="video-card" data-tags="media sites cheap">
       <div class="card-top"><img src="img/minimax-code.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">MiniMax Code</span><span class="card-dur">31:45</span></div>
       <div class="card-body"><h3 class="card-title">MiniMax Code - Как Я Заменил 5 Нейросетей Одной (Сайты, Видео, Озвучка)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/design-loop-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/design-loop-cheatsheet/" target="_blank" class="video-card" data-tags="sites">
       <div class="card-top"><img src="img/design-loop.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Дизайн</span><span class="card-dur">18:20</span></div>
       <div class="card-body"><h3 class="card-title">Преврати Claude в Дизайн-Гения за 3 Шага... Просто Смотри</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/claude-design-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/claude-design-cheatsheet/" target="_blank" class="video-card" data-tags="sites">
       <div class="card-top"><img src="img/claude-design-3.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude Design 3.0</span><span class="card-dur">23:35</span></div>
       <div class="card-body"><h3 class="card-title">Claude Design 3.0 Только Что Убил ИИ-Слоп Навсегда</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/claude-generate-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/claude-generate-cheatsheet/" target="_blank" class="video-card" data-tags="media cheap">
       <div class="card-top"><img src="img/claude-generate.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Генерация</span><span class="card-dur">18:18</span></div>
       <div class="card-body"><h3 class="card-title">Этот Скилл Claude Заменил Мне Платную Подписку (Higgsfield)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/antislop-design-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/antislop-design-cheatsheet/" target="_blank" class="video-card" data-tags="sites">
       <div class="card-top"><img src="img/antislop-design-v2.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude Code · Дизайн</span><span class="card-dur">30:31</span></div>
       <div class="card-body"><h3 class="card-title">Преврати Claude в ГЕНИЯ Дизайна за 3 Простых Шага (Claude Code)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/fable5-website-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/fable5-website-cheatsheet/" target="_blank" class="video-card" data-tags="sites money">
       <div class="card-top"><img src="img/fable5-website.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Fable 5</span><span class="card-dur">14:43</span></div>
       <div class="card-body"><h3 class="card-title">Claude Fable 5 Собрал Сайт за $10.000 за Минуты</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/launch-your-agent-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/launch-your-agent-cheatsheet/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/launch-your-agent.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude Code · Агенты</span><span class="card-dur">19:50</span></div>
       <div class="card-body"><h3 class="card-title">НОВЫЙ Скилл Claude Code Собирает ИИ-Агентов за МИНУТЫ</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/ollama-local-ai-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/ollama-local-ai-cheatsheet/" target="_blank" class="video-card" data-tags="cheap local">
       <div class="card-top"><img src="img/ollama.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Ollama · Локальный AI</span><span class="card-dur">24:18</span></div>
       <div class="card-body"><h3 class="card-title">Запусти Самый Мощный ИИ Локально — БЕСПЛАТНО и Без Лимитов (Ollama)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/opus48-dynamic-workflows/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/opus48-dynamic-workflows/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/opus48.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Opus 4.8</span><span class="card-dur">28:09</span></div>
       <div class="card-body"><h3 class="card-title">Claude Code + Армия Агентов = Это БЕЗУМИЕ (Opus 4.8)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/Stitch-Claude-Code/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/Stitch-Claude-Code/" target="_blank" class="video-card" data-tags="sites">
       <div class="card-top"><img src="img/stitch-claude-code.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Stitch</span><span class="card-dur">26:38</span></div>
       <div class="card-body"><h3 class="card-title">Claude Code + Stitch 2.0 УНИЧТОЖАЮТ Веб-дизайн (Убийца Figma)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/three-brain-cheatsheet/" target="_blank" class="video-card" data-tags="claude codex gemini">
+    <a href="https://gomymy64.github.io/three-brain-cheatsheet/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/25a21722b895.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Codex · Gemini</span><span class="card-dur">14:53</span></div>
       <div class="card-body"><h3 class="card-title">Claude Code Стал в 10 РАЗ БЕЗУМНЕЕ (Codex + Gemini)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
-    <a href="https://gomymy64.github.io/deepseek-claude-cheatsheet/" target="_blank" class="video-card" data-tags="deepseek claude">
+    <a href="https://gomymy64.github.io/deepseek-claude-cheatsheet/" target="_blank" class="video-card" data-tags="cheap">
       <div class="card-top"><img src="img/fff4f2495fd6.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">DeepSeek · Claude</span><span class="card-dur">22:02</span></div>
       <div class="card-body"><h3 class="card-title">DeepSeek V4 + Claude Code = 100X ДЕШЕВЛЕ</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/claude-money-prompts/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/claude-money-prompts/" target="_blank" class="video-card" data-tags="money agents">
       <div class="card-top"><img src="img/f06ab689ce84.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude</span><span class="card-dur">13:12</span></div>
       <div class="card-body"><h3 class="card-title">Я попросил Claude заработать мне как можно БОЛЬШЕ денег</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/claude-design-guide/" target="_blank" class="video-card" data-tags="claude design">
+    <a href="https://gomymy64.github.io/claude-design-guide/" target="_blank" class="video-card" data-tags="sites">
       <div class="card-top"><img src="img/6f29c7a0412c.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude Design</span><span class="card-dur">27:12</span></div>
       <div class="card-body"><h3 class="card-title">Claude Design только что вышел... Разблокируй Суперспособности</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/claude-code-2-cheatsheet/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/claude-code-2-cheatsheet/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/3c00e533d46c.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude Code</span><span class="card-dur">17:10</span></div>
       <div class="card-body"><h3 class="card-title">Claude Code 2.0 Уже Здесь... Автоматизируй Что Угодно</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/jarvis-memory/" target="_blank" class="video-card" data-tags="claude obsidian">
+    <a href="https://gomymy64.github.io/jarvis-memory/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/370f6189f4ea.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Obsidian</span><span class="card-dur">23:49</span></div>
       <div class="card-body"><h3 class="card-title">Claude Code + Obsidian ВЗОРВАЛИ Интернет (Метод Андрея Карпати)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/gemma4-cheatsheet/" target="_blank" class="video-card" data-tags="claude gemma ollama">
+    <a href="https://gomymy64.github.io/gemma4-cheatsheet/" target="_blank" class="video-card" data-tags="cheap local">
       <div class="card-top"><img src="img/cc76fb608e05.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Gemma · Ollama</span><span class="card-dur">13:14</span></div>
       <div class="card-body"><h3 class="card-title">Как Я Использую Claude Code БЕСПЛАТНО (Gemma 4 + Ollama)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/cheatsheet-notebooklm/" target="_blank" class="video-card" data-tags="claude notebooklm">
+    <a href="https://gomymy64.github.io/cheatsheet-notebooklm/" target="_blank" class="video-card" data-tags="agents cheap">
       <div class="card-top"><img src="img/bb26e83a1215.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · NotebookLM</span><span class="card-dur">18:13</span></div>
       <div class="card-body"><h3 class="card-title">Claude Code + NotebookLM = БЕСКОНЕЧНАЯ Память (Бесплатно)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/crazy-websites/" target="_blank" class="video-card" data-tags="claude antigravity">
+    <a href="https://gomymy64.github.io/crazy-websites/" target="_blank" class="video-card" data-tags="sites money">
       <div class="card-top"><img src="img/caaf5d80b776.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Nano Banana · FireCrawl</span><span class="card-dur">17:06</span></div>
       <div class="card-body"><h3 class="card-title">Claude Code + Nano Banana 2 + FireCrawl = БЕЗУМНЫЕ Сайты за $12К</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/cheatsheet-claude-code-free/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/cheatsheet-claude-code-free/" target="_blank" class="video-card" data-tags="cheap">
       <div class="card-top"><img src="img/2543906bc212.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude</span><span class="card-dur">13:15</span></div>
       <div class="card-body"><h3 class="card-title">Claude Code — Как Я Использую БЕСПЛАТНО Навсегда (OpenRouter)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/stitch-claude-cheatsheet/" target="_blank" class="video-card" data-tags="claude antigravity">
+    <a href="https://gomymy64.github.io/stitch-claude-cheatsheet/" target="_blank" class="video-card" data-tags="sites">
       <div class="card-top"><img src="img/a651d90f25df.jpg" class="card-thumb-img" loading="lazy"><span class="card-tag">Claude · Stitch</span><span class="card-dur">17:50</span></div>
       <div class="card-body"><h3 class="card-title">Stitch — Как Я Делаю Сайты за 10 Минут (Claude Code)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
     
-    <a href="https://gomymy64.github.io/cheatsheet-nano-banana/" target="_blank" class="video-card" data-tags="claude antigravity">
+    <a href="https://gomymy64.github.io/cheatsheet-nano-banana/" target="_blank" class="video-card" data-tags="media sites">
       <div class="card-top"><img src="img/9b723aa8ba21.jpg" class="card-thumb-img"><span class="card-tag">AntiGravity · Claude</span><span class="card-dur">17:50</span><div class="card-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="38" height="38"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg></div></div>
       <div class="card-body"><h3 class="card-title">Безумный Конструктор Сайтов (Claude + AntiGravity)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
 
-    <a href="https://gomymy64.github.io/NotebookLM-Antigravity/" target="_blank" class="video-card" data-tags="notebooklm antigravity">
+    <a href="https://gomymy64.github.io/NotebookLM-Antigravity/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/f555b3b8c806.jpg" class="card-thumb-img"><span class="card-tag">NotebookLM + AntiGravity</span><span class="card-dur">36:56</span><div class="card-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="38" height="38"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg></div></div>
       <div class="card-body"><h3 class="card-title">NotebookLM Получил НОВУЮ Суперсилу (AntiGravity)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
 
-    <a href="https://gomymy64.github.io/Skills-2.0-Claude-Guide/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/Skills-2.0-Claude-Guide/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/965675af885f.jpg" class="card-thumb-img"><span class="card-tag">Claude Code</span><span class="card-dur">31:37</span><div class="card-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="38" height="38"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg></div></div>
       <div class="card-body"><h3 class="card-title">Claude Code СТАЛ НЕУДЕРЖИМ (Skills 2.0)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
 
-    <a href="https://gomymy64.github.io/cheatsheets/" target="_blank" class="video-card" data-tags="claude">
+    <a href="https://gomymy64.github.io/cheatsheets/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/c4d41b61f98d.jpg" class="card-thumb-img"><span class="card-tag">Claude Cowork</span><span class="card-dur">19:05</span><div class="card-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="38" height="38"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg></div></div>
       <div class="card-body"><h3 class="card-title">5 БЕЗУМНЫХ способов использовать Claude Cowork</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
 
-    <a href="https://gomymy64.github.io/Gemini-3.1-Pro-AntiGravity-Crazy-Web-Sites/" target="_blank" class="video-card" data-tags="gemini antigravity">
+    <a href="https://gomymy64.github.io/Gemini-3.1-Pro-AntiGravity-Crazy-Web-Sites/" target="_blank" class="video-card" data-tags="sites">
       <div class="card-top"><img src="img/e148c421fc46.jpg" class="card-thumb-img"><span class="card-tag">Gemini + AntiGravity</span><span class="card-dur">18:26</span><div class="card-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="38" height="38"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg></div></div>
       <div class="card-body"><h3 class="card-title">Gemini 3.1 Pro + AntiGravity УНИЧТОЖАЮТ веб-дизайнеров</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
 
-    <a href="https://gomymy64.github.io/stitch-antigravity/" target="_blank" class="video-card" data-tags="antigravity">
+    <a href="https://gomymy64.github.io/stitch-antigravity/" target="_blank" class="video-card" data-tags="sites">
       <div class="card-top"><img src="img/8ceba8dda2aa.jpg" class="card-thumb-img"><span class="card-tag">AntiGravity + Stitch</span><span class="card-dur">23:19</span><div class="card-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="38" height="38"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg></div></div>
       <div class="card-body"><h3 class="card-title">AntiGravity + Stitch создают БЕЗУМНЫЕ сайты</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
 
-    <a href="https://gomymy64.github.io/notebooklm-x10-Antigravity/" target="_blank" class="video-card" data-tags="notebooklm antigravity">
+    <a href="https://gomymy64.github.io/notebooklm-x10-Antigravity/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/27badf4b2069.jpg" class="card-thumb-img"><span class="card-tag">NotebookLM</span><span class="card-dur">29:16</span><div class="card-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="38" height="38"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg></div></div>
       <div class="card-body"><h3 class="card-title">NotebookLM стал в 10 раз лучше (AntiGravity)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
 
-    <a href="https://gomymy64.github.io/Creatr-Startup-50k/" target="_blank" class="video-card" data-tags="antigravity">
+    <a href="https://gomymy64.github.io/Creatr-Startup-50k/" target="_blank" class="video-card" data-tags="money sites">
       <div class="card-top"><img src="img/8bb2fa39f9a1.jpg" class="card-thumb-img"><span class="card-tag">Google AntiGravity</span><span class="card-dur">22:29</span><div class="card-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="38" height="38"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg></div></div>
       <div class="card-body"><h3 class="card-title">IT-Стартап за $50,000 БЕЗ КОДА (Google AntiGravity)</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
 
-    <a href="https://gomymy64.github.io/Antigravity-Full-Guide/" target="_blank" class="video-card" data-tags="antigravity gemini">
+    <a href="https://gomymy64.github.io/Antigravity-Full-Guide/" target="_blank" class="video-card" data-tags="agents">
       <div class="card-top"><img src="img/9bb7260165c5.jpg" class="card-thumb-img"><span class="card-tag">Google AntiGravity</span><span class="card-dur">17:56</span><div class="card-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="38" height="38"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg></div></div>
       <div class="card-body"><h3 class="card-title">Google AntiGravity: Как использовать ИИ лучше 99% людей</h3><div class="card-footer"><span class="card-views">Смотреть гайд</span><svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></div></div>
     </a>
+    <div class="hub-empty" id="hub-empty">Ничего не нашлось. Попробуй другое слово или нажми «Все».</div>
   </div>
 </div>
 
@@ -999,16 +1007,32 @@ const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.ta
 document.querySelectorAll('.reveal,.video-card').forEach(el=>obs.observe(el));
 document.querySelectorAll('.video-card').forEach((c,i)=>{c.style.transitionDelay=`${i*.06}s`});
 
+let hubFilter='all';
+const hubSearchEl=document.getElementById('hub-search');
+const hubEmptyEl=document.getElementById('hub-empty');
+function hubApply(){
+  const q=(hubSearchEl&&hubSearchEl.value||'').trim().toLowerCase();
+  let shown=0;
+  document.querySelectorAll('.video-card').forEach(card=>{
+    const tags=(card.dataset.tags||'').toLowerCase();
+    const title=(card.querySelector('.card-title')?card.querySelector('.card-title').textContent:'').toLowerCase();
+    const byFilter=(hubFilter==='all')||tags.split(/\s+/).includes(hubFilter);
+    const bySearch=!q||title.includes(q)||tags.includes(q);
+    const ok=byFilter&&bySearch;
+    card.style.display=ok?'':'none';
+    if(ok)shown++;
+  });
+  if(hubEmptyEl)hubEmptyEl.classList.toggle('show',shown===0);
+}
 document.querySelectorAll('.filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    const f=btn.dataset.filter;
-    document.querySelectorAll('.video-card').forEach(card=>{
-      card.style.display=(f==='all'||(card.dataset.tags&&card.dataset.tags.includes(f)))?'':'none';
-    });
+    hubFilter=btn.dataset.filter;
+    hubApply();
   });
 });
+if(hubSearchEl)hubSearchEl.addEventListener('input',hubApply);
 </script>
 
 <!-- CUSTOM CURSOR -->
